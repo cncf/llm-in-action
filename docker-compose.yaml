@@ -1,0 +1,19 @@
+services:
+  bot:
+    build:
+      context: .
+    environment:
+      - LANGCHAIN_ENDPOINT=${LANGCHAIN_ENDPOINT-"https://api.smith.langchain.com"}
+      - LANGCHAIN_PROJECT=${LANGCHAIN_PROJECT-"llm-in-action"}
+      - LANGCHAIN_TRACING_V2=${LANGCHAIN_TRACING_V2-true}
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL-http://host.docker.internal:11434}
+    networks:
+      - net
+    develop:
+      watch:
+        - action: rebuild
+          path: .
+    ports:
+      - 8501:8501
+networks:
+  net:
