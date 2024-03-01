@@ -5,6 +5,10 @@ from ollama import Client
 ollama_base_url = os.getenv("OLLAMA_BASE_URL")
 llm_name = os.getenv("LLM")
 
+def process_stream(stream):
+  for chunk in stream:
+   yield chunk['message']['content']
+
 # Streamlit UI
 st.title('Image Description with LLaVa 📸')
 picture = st.camera_input("Take a picture")
@@ -27,8 +31,10 @@ if picture:
   }
 
   # Use the ollama.chat function to send the image and retrieve the description
-  response = client.chat(
+  stream = client.chat(
       model="llava",  # Specify the desired LLaVA model size
       messages=[message],
+      stream=True,
   )
-  st.write(response['message']['content'])
+  
+  st.write_stream(process_stream(stream))
