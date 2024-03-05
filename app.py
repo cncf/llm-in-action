@@ -10,6 +10,20 @@ def process_stream(stream):
    yield chunk['message']['content']
 
 # Streamlit UI
+
+styl = f"""
+<style>
+    /* not great support for :has yet (hello FireFox), but using it for now */
+    .main {{
+        background-image: url('https://vior-lys.s3.amazonaws.com/img/kccneu24.png'); 
+        background-repeat: repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }}
+</style>
+"""
+st.markdown(styl, unsafe_allow_html=True)
+
 st.title('Image Description with LLaVa 📸')
 picture = st.camera_input("Take a picture")
 
