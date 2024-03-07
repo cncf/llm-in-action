@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: keynote
-          image: onlydole/llm-in-action
+          image: ghcr.io/cncf/keynote
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8501
