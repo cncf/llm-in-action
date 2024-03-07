@@ -3,6 +3,8 @@
 echo "Create the kind cluster..."
 kind create cluster --config cluster.yaml
 
+kind -n llm load docker-image onlydole/llm-in-action:latest
+
 echo "Applying the Kubernets manifests..."
 kubectl apply -f kubernetes/deployment.yaml
 kubectl apply -f kubernetes/service.yaml
