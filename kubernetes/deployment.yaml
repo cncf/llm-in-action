@@ -17,6 +17,7 @@ spec:
       containers:
         - name: keynote
           image: onlydole/llm-in-action
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8501
           env:
