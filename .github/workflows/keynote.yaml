@@ -38,7 +38,7 @@ jobs:
           images: |
             ${{ env.IMAGE_NAME }}
           labels: |
-            io.artifacthub.package.readme-url=https://raw.githubusercontent.com/cncf/llms-in-action/main/README.md
+            io.artifacthub.package.readme-url=https://raw.githubusercontent.com/cncf/llm-in-action/main/README.md
 
       # Build image using Buildah action
       - name: Build Image
