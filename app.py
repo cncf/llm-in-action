@@ -24,8 +24,10 @@ styl = f"""
 """
 st.markdown(styl, unsafe_allow_html=True)
 
-st.title('Describe an Image with LLaVa 📸')
-picture = st.camera_input("Take a picture. Say Kubernetes!")
+st.title(':grey[Describe an Image with LLaVa 📸]')
+picture = st.camera_input("")
+
+st.subheader(':grey[Take a picture. Say ] :blue[_Kubernetes_]:grey[!]')
 
 if picture:
   with open ('snap.jpg','wb') as f:
