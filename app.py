@@ -1,4 +1,5 @@
 import os
+import base64
 import streamlit as st
 from ollama import Client
 
@@ -9,13 +10,17 @@ def process_stream(stream):
   for chunk in stream:
    yield chunk['message']['content']
 
+def get_base64_encoded_image(image_path):
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode('utf-8')
+
 # Streamlit UI
 
+base64_image = get_base64_encoded_image('img/kccneu24.png')
 styl = f"""
 <style>
-    /* not great support for :has yet (hello FireFox), but using it for now */
     .main {{
-        background-image: url('https://vior-lys.s3.amazonaws.com/img/kccneu24.png'); 
+        background-image: url(data:image/png;base64,{base64_image}); 
         background-repeat: repeat;
         background-size: cover;
         background-attachment: fixed;
